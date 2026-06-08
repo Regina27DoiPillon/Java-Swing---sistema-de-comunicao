@@ -1,0 +1,147 @@
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JToggleButton;
+
+public class Cadastro {
+   public Cadastro() {
+   }
+
+   public static void main(String[] var0) {
+      final JFrame var1 = new JFrame("Criar Conta");
+      var1.setSize(500, 600);
+      var1.setDefaultCloseOperation(3);
+      var1.setLocationRelativeTo((Component)null);
+      JPanel var2 = new JPanel();
+      var2.setLayout(new BoxLayout(var2, 1));
+      var2.setBackground(Color.BLACK);
+      JLabel var3 = new JLabel("Criar Conta");
+      var3.setFont(new Font("Arial", 1, 36));
+      var3.setForeground(Color.WHITE);
+      var3.setAlignmentX(0.5F);
+      JLabel var4 = new JLabel("Digite o email");
+      var4.setForeground(Color.WHITE);
+      var4.setFont(new Font("Arial", 1, 18));
+      var4.setAlignmentX(0.5F);
+      final JTextField var5 = new JTextField();
+      var5.setMaximumSize(new Dimension(350, 35));
+      JLabel var6 = new JLabel("Digite o telefone");
+      var6.setForeground(Color.WHITE);
+      var6.setFont(new Font("Arial", 1, 18));
+      var6.setAlignmentX(0.5F);
+      final JTextField var7 = new JTextField();
+      var7.setMaximumSize(new Dimension(350, 35));
+      JLabel var8 = new JLabel("Digite o nome");
+      var8.setForeground(Color.WHITE);
+      var8.setFont(new Font("Arial", 1, 18));
+      var8.setAlignmentX(0.5F);
+      final JTextField var9 = new JTextField();
+      var9.setMaximumSize(new Dimension(350, 35));
+      JLabel var10 = new JLabel("Digite uma senha");
+      var10.setForeground(Color.WHITE);
+      var10.setFont(new Font("Arial", 1, 18));
+      var10.setAlignmentX(0.5F);
+      final JPasswordField var11 = new JPasswordField();
+      var11.setMaximumSize(new Dimension(350, 35));
+      JLabel var12 = new JLabel("Contato");
+      var12.setForeground(Color.WHITE);
+      var12.setFont(new Font("Arial", 1, 18));
+      var12.setAlignmentX(0.5F);
+      final JToggleButton var13 = new JToggleButton("Pessoal");
+      var13.setMaximumSize(new Dimension(180, 40));
+      var13.setAlignmentX(0.5F);
+      var13.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent var1) {
+            if (var13.isSelected()) {
+               var13.setText("Profissional");
+            } else {
+               var13.setText("Pessoal");
+            }
+
+         }
+      });
+      JLabel var14 = new JLabel("Permitir:");
+      var14.setForeground(Color.WHITE);
+      var14.setFont(new Font("Arial", 1, 18));
+      var14.setAlignmentX(0.5F);
+      final JCheckBox var15 = new JCheckBox("Ligação");
+      final JCheckBox var16 = new JCheckBox("Mensagem");
+      final JCheckBox var17 = new JCheckBox("Email");
+      var15.setBackground(Color.BLACK);
+      var16.setBackground(Color.BLACK);
+      var17.setBackground(Color.BLACK);
+      var15.setForeground(Color.WHITE);
+      var16.setForeground(Color.WHITE);
+      var17.setForeground(Color.WHITE);
+      var15.setAlignmentX(0.5F);
+      var16.setAlignmentX(0.5F);
+      var17.setAlignmentX(0.5F);
+      JButton var18 = new JButton("Criar Conta");
+      var18.setFont(new Font("Arial", 1, 18));
+      var18.setPreferredSize(new Dimension(200, 45));
+      JPanel var19 = new JPanel();
+      var19.setBackground(Color.BLACK);
+      var19.add(var18);
+      var18.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent var1x) {
+            String var2 = var5.getText().trim();
+            String var3 = var7.getText().trim();
+            String var4 = var9.getText().trim();
+            String var5x = (new String(var11.getPassword())).trim();
+            if (var2.isEmpty() && var3.isEmpty()) {
+               JOptionPane.showMessageDialog(var1, "Preencha Email ou Telefone.");
+            } else if (var4.isEmpty()) {
+               JOptionPane.showMessageDialog(var1, "O nome é obrigatório.");
+            } else if (var5x.isEmpty()) {
+               JOptionPane.showMessageDialog(var1, "A senha é obrigatória.");
+            } else if (!var15.isSelected() && !var16.isSelected() && !var17.isSelected()) {
+               JOptionPane.showMessageDialog(var1, "Selecione pelo menos uma forma de contato.");
+            } else if (!var2.equalsIgnoreCase("Admin@gmail.com") && !var3.equals("999991120")) {
+               JOptionPane.showMessageDialog(var1, "Conta criada com sucesso, faça o login para iniciar sessão.");
+            } else {
+               JOptionPane.showMessageDialog(var1, "Já existe conta criada com email/telefone.");
+            }
+         }
+      });
+      var2.add(Box.createVerticalStrut(30));
+      var2.add(var3);
+      var2.add(Box.createVerticalStrut(30));
+      var2.add(var4);
+      var2.add(var5);
+      var2.add(Box.createVerticalStrut(15));
+      var2.add(var6);
+      var2.add(var7);
+      var2.add(Box.createVerticalStrut(15));
+      var2.add(var8);
+      var2.add(var9);
+      var2.add(Box.createVerticalStrut(15));
+      var2.add(var10);
+      var2.add(var11);
+      var2.add(Box.createVerticalStrut(20));
+      var2.add(var12);
+      var2.add(Box.createVerticalStrut(10));
+      var2.add(var13);
+      var2.add(Box.createVerticalStrut(20));
+      var2.add(var14);
+      var2.add(var15);
+      var2.add(var16);
+      var2.add(var17);
+      var2.add(Box.createVerticalStrut(25));
+      var2.add(var19);
+      var1.add(var2);
+      var1.setVisible(true);
+   }
+}
