@@ -53,11 +53,11 @@ public class EmailRecebido extends JFrame { //criou a classe JFrame
 
 
         // campo de resposta + botão enviar
-        JPanel painelRodapeEmail =new JPanel(new BorderLayout());
-        painelRodapeEmail.setPreferredSize(new Dimension(300, 60));
+        JPanel painelRodapeEmail =new JPanel(new BorderLayout()); //cria uma div
+        painelRodapeEmail.setPreferredSize(new Dimension(300, 60)); //define o tamanho
 
 
-        JTextArea escreverMensg = new JTextArea();
+        JTextArea escreverMensg = new JTextArea(); //cria um jtext a
         escreverMensg.setText("Responder...");
         escreverMensg.setLineWrap(true);
         escreverMensg.setWrapStyleWord(true);

@@ -29,12 +29,15 @@ public class Janela extends JFrame{
         criar_conta.setBounds(100, 400, 100, 50);
 
         entrar.addActionListener(e->{
-            getContentPane().remove(painelLogin);
+            getContentPane().removeAll();   
+            add(new Historico());         
             revalidate(); // recalcula o layout
-            repaint();    // redesenha a tela
+            repaint(); // redesenha a tela
         });
+
         criar_conta.addActionListener(e->{
-            getContentPane().remove(painelLogin);
+            getContentPane().removeAll();       // remove tudo
+            add(new Cadastro());          // adiciona o painel de cadastro
             revalidate();
             repaint();
         });

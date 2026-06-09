@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class Historico extends JFrame {
+public class Historico extends JPanel {
     static class Contato {
         String nome;
         String tipo;
@@ -34,11 +34,11 @@ public class Historico extends JFrame {
     JTextField campoPesquisaLigar;
 
     public Historico() {
-        setTitle("App Contatos");
+        //setTitle("App Contatos");
         setSize(400, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
-        getContentPane().setBackground(Color.BLACK);
+        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //setLocationRelativeTo(null);
+        //getContentPane().setBackground(Color.BLACK);
         Dados();
 
         JTabbedPane abas = new JTabbedPane();
@@ -273,10 +273,10 @@ public class Historico extends JFrame {
         return campoPesquisaLigar;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            Historico app = new Historico();
-            app.setVisible(true);
-        });
-    }
+    //public static void main(String[] args) {
+    //    SwingUtilities.invokeLater(() -> {
+     //       Historico app = new Historico();
+     //       app.setVisible(true); 
+     //   });
+    //}
 }

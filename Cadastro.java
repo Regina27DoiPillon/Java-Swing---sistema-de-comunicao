@@ -2,9 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Cadastro {
+public class Cadastro extends JPanel{
 
-    public static void main(String[] args) {
+    public Cadastro(){
 
         JFrame janela = new JFrame("Criar Conta");
         janela.setSize(500, 750);
