@@ -33,6 +33,11 @@ public class Janela extends JFrame{
             revalidate(); // recalcula o layout
             repaint();    // redesenha a tela
         });
+        criar_conta.addActionListener(e->{
+            getContentPane().remove(painelLogin);
+            revalidate();
+            repaint();
+        });
         
         setLayout(null);
         //add-> coloca os componentes dentro do JPanel
