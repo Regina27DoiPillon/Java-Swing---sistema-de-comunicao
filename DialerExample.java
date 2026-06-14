@@ -13,7 +13,7 @@ public class DialerExample {
         SwingUtilities.invokeLater(() -> new DialerExample().createAndShowGui());
     }
 
-    private void createAndShowGui() {
+    public void createAndShowGui() {
         JFrame frame = new JFrame("Dah");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(360, 560);

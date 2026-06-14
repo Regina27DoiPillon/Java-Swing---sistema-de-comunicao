@@ -4,7 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class Historico extends JPanel {
+public class Historico extends JFrame {
+
+    // classe de registro de contato usado no historico
     static class Contato {
         String nome;
         String tipo;
@@ -17,10 +19,12 @@ public class Historico extends JPanel {
         }
     }
 
+    // listas de historico para cada tipo de contatos
     ArrayList<Contato> historicoEmail = new ArrayList<>();
     ArrayList<Contato> historicoWhatsapp = new ArrayList<>();
     ArrayList<Contato> historicoLigar = new ArrayList<>();
 
+    // nome dos filtros
     JPanel painelHistoricoEmail;
     JPanel painelHistoricoWhatsapp;
     JPanel painelHistoricoLigar;
@@ -34,17 +38,21 @@ public class Historico extends JPanel {
     JTextField campoPesquisaLigar;
 
     public Historico() {
-        //setTitle("App Contatos");
+        setTitle("App Contatos");
         setSize(400, 700);
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //setLocationRelativeTo(null);
-        //getContentPane().setBackground(Color.BLACK);
-        Dados();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.BLACK);
 
+        // carrega os dados de exemplo para cada historico
+        popularDados();
+
+        // cria as abas do historico
         JTabbedPane abas = new JTabbedPane();
         abas.setBackground(Color.BLACK);
         abas.setForeground(Color.WHITE);
 
+        // Criar as 3 abas
         JPanel abaWhatsapp = criarAba("whatsapp", historicoWhatsapp);
         JPanel abaEmail = criarAba("email", historicoEmail);
         JPanel abaLigar = criarAba("ligar", historicoLigar);
@@ -56,7 +64,9 @@ public class Historico extends JPanel {
         add(abas);
     }
 
-    private void Dados() {
+    // Dados de cada
+    private void popularDados() {
+        // Historico de Email
         historicoEmail.add(new Contato("Ana Silva", "enviado", true));
         historicoEmail.add(new Contato("Carlos Souza", "recebido", false));
         historicoEmail.add(new Contato("Ana Silva", "enviado", true));   // 2º email para Ana
@@ -65,32 +75,38 @@ public class Historico extends JPanel {
         historicoEmail.add(new Contato("Daniela Rocha", "recebido", false));
         historicoEmail.add(new Contato("Ana Silva", "recebido", true));
 
+        // Historico de Whatsapp
         historicoWhatsapp.add(new Contato("Fernando Alves", "enviado", false));
         historicoWhatsapp.add(new Contato("Gabriela Costa", "recebido", true));
         historicoWhatsapp.add(new Contato("Fernando Alves", "recebido", false));
         historicoWhatsapp.add(new Contato("Helena Martins", "enviado", true));
 
+        // Historico de Ligar
         historicoLigar.add(new Contato("Igor Pereira", "enviado", true));
         historicoLigar.add(new Contato("Julia Santos", "recebido", false));
         historicoLigar.add(new Contato("Igor Pereira", "recebido", true));
     }
 
+    // cria e configura uma aba do historico
     private JPanel criarAba(String nomeAba, ArrayList<Contato> dados) {
         JPanel aba = new JPanel();
         aba.setLayout(new BorderLayout());
         aba.setBackground(Color.BLACK);
 
+        // painel de controles de filtro e pesquisa
         JPanel painelTopo = new JPanel();
         painelTopo.setLayout(new BoxLayout(painelTopo, BoxLayout.Y_AXIS));
         painelTopo.setBackground(Color.BLACK);
         painelTopo.setBorder(BorderFactory.createEmptyBorder(10, 15, 10, 15));
 
+        // Texto favoritos
         JLabel lblFavoritos = new JLabel("favoritos");
         lblFavoritos.setForeground(Color.WHITE);
         lblFavoritos.setAlignmentX(Component.CENTER_ALIGNMENT);
         painelTopo.add(lblFavoritos);
         painelTopo.add(Box.createVerticalStrut(5));
 
+        // mudar off/on
         JToggleButton toggleFav = new JToggleButton("off");
         toggleFav.setPreferredSize(new Dimension(150, 35));
         toggleFav.setMaximumSize(new Dimension(150, 35));
@@ -100,6 +116,7 @@ public class Historico extends JPanel {
         toggleFav.setFocusPainted(false);
         toggleFav.setBorder(new EmptyBorder(5, 15, 5, 15));
 
+        // Ação do mudar favoritos
         toggleFav.addActionListener(e -> {
             if (toggleFav.isSelected()) {
                 toggleFav.setText("on");
@@ -114,7 +131,7 @@ public class Historico extends JPanel {
         painelTopo.add(toggleFav);
         painelTopo.add(Box.createVerticalStrut(10));
 
-        // JTextField pesquisar
+        // barinha de pesquisar
         JTextField campoPesquisa = new JTextField("pesquisar");
         campoPesquisa.setPreferredSize(new Dimension(250, 35));
         campoPesquisa.setMaximumSize(new Dimension(250, 35));
@@ -124,6 +141,7 @@ public class Historico extends JPanel {
         campoPesquisa.setHorizontalAlignment(JTextField.CENTER);
         campoPesquisa.setBorder(new EmptyBorder(5, 10, 5, 10));
 
+        // Ação da pesquisa
         campoPesquisa.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -133,7 +151,7 @@ public class Historico extends JPanel {
 
         painelTopo.add(campoPesquisa);
 
-        // Salvar referências
+        // Salva referências
         if (nomeAba.equals("email")) {
             toggleFavoritosEmail = toggleFav;
             campoPesquisaEmail = campoPesquisa;
@@ -147,7 +165,7 @@ public class Historico extends JPanel {
 
         aba.add(painelTopo, BorderLayout.NORTH);
 
-        // Painel do histórico (JPanel com botões)
+        // Painel do Historico 
         JPanel painelHistorico = new JPanel();
         painelHistorico.setLayout(new BoxLayout(painelHistorico, BoxLayout.Y_AXIS));
         painelHistorico.setBackground(Color.BLACK);
@@ -166,7 +184,7 @@ public class Historico extends JPanel {
         scroll.getVerticalScrollBar().setUnitIncrement(16);
         aba.add(scroll, BorderLayout.CENTER);
 
-        // Painel inferior (botões de ação)
+        // Painel inferior 
         JPanel painelInferior = new JPanel();
         painelInferior.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         painelInferior.setBackground(Color.BLACK);
@@ -175,14 +193,34 @@ public class Historico extends JPanel {
                 new EmptyBorder(5, 10, 5, 10)
         ));
 
-        String textoNovo = nomeAba.equals("email") ? "novo email" : "novo cont";
+        String textoNovo = nomeAba.equals("email") ? "novo rascunho" : nomeAba.equals("whatsapp") ? "novo contato" : "nova ligação";
 
         JButton btnNovo = criarBotaoAcao(textoNovo);
         JButton btnExportar = criarBotaoAcao("exportar");
         JButton btnSair = criarBotaoAcao("sair");
 
-        // Sair - fecha o aplicativo
+        // Sair 
         btnSair.addActionListener(e -> System.exit(0));
+
+        if (nomeAba.equals("ligar")) {
+            btnNovo.addActionListener(e -> {
+                SwingUtilities.invokeLater(() -> new DialerExample().createAndShowGui());
+            });
+        }
+
+        if (nomeAba.equals("email")) {
+            btnNovo.addActionListener(e -> {
+        new RascunhoEmail();
+        Historico.this.dispose();
+    });
+}
+
+if (nomeAba.equals("whatsapp")) {
+            btnNovo.addActionListener(e -> {
+        new NovoContato();
+        Historico.this.dispose();
+    });
+}
 
         painelInferior.add(btnNovo);
         painelInferior.add(btnExportar);
@@ -190,12 +228,13 @@ public class Historico extends JPanel {
 
         aba.add(painelInferior, BorderLayout.SOUTH);
 
-        // Renderizar histórico inicial
+        // Renderiza o Historico inicial
         atualizarHistorico(nomeAba, dados, toggleFav, campoPesquisa);
 
         return aba;
     }
 
+    // atualiza os itens exibidos no painel de historico
     private void atualizarHistorico(String nomeAba, ArrayList<Contato> dados,
                                     JToggleButton toggleFav, JTextField campoPesquisa) {
 
@@ -218,7 +257,7 @@ public class Historico extends JPanel {
                 }
             }
 
-            // Criar botão do histórico
+            // Criar botão no Historico
             JButton btnHistorico = new JButton(c.nome);
             btnHistorico.setPreferredSize(new Dimension(320, 45));
             btnHistorico.setMaximumSize(new Dimension(320, 45));
@@ -228,7 +267,7 @@ public class Historico extends JPanel {
             btnHistorico.setForeground(Color.WHITE);
             btnHistorico.setFont(new Font("SansSerif", Font.PLAIN, 14));
 
-            // Cor baseada no tipo (apenas para aba email)
+            // Cor baseada no tipo 
             if (nomeAba.equals("email")) {
                 if (c.tipo.equals("enviado")) {
                     btnHistorico.setBackground(new Color(30, 80, 180)); // AZUL
@@ -239,9 +278,21 @@ public class Historico extends JPanel {
                 btnHistorico.setBackground(new Color(50, 50, 50)); // cinza padrão
             }
 
-            // Tooltip com info
+            // informações
             btnHistorico.setToolTipText(c.nome + " - " + c.tipo +
-                    (c.favorito ? "+" : ""));
+                    (c.favorito ? " *" : ""));
+
+            if (nomeAba.equals("whatsapp")) {
+                btnHistorico.addActionListener(e -> {
+                    SwingUtilities.invokeLater(() -> new MensagemTexto());
+                    Historico.this.dispose();
+                });
+            } else if (nomeAba.equals("email")) {
+                btnHistorico.addActionListener(e -> {
+                    SwingUtilities.invokeLater(() -> new EmailRecebido());
+                    Historico.this.dispose();
+                });
+            }
 
             painelHistorico.add(btnHistorico);
             painelHistorico.add(Box.createVerticalStrut(5));
@@ -251,6 +302,7 @@ public class Historico extends JPanel {
         painelHistorico.repaint();
     }
 
+    // metodos auxiliares para criar componentes
     private JButton criarBotaoAcao(String texto) {
         JButton btn = new JButton(texto);
         btn.setBackground(new Color(50, 50, 50));
@@ -273,10 +325,11 @@ public class Historico extends JPanel {
         return campoPesquisaLigar;
     }
 
-    //public static void main(String[] args) {
-    //    SwingUtilities.invokeLater(() -> {
-     //       Historico app = new Historico();
-     //       app.setVisible(true); 
-     //   });
-    //}
+    // Abrir o MAIN
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            Historico app = new Historico();
+            app.setVisible(true);
+        });
+    }
 }

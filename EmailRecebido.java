@@ -20,6 +20,14 @@ public class EmailRecebido extends JFrame { //criou a classe JFrame
         painelTopo.add(voltar); //adiciona o botão na div
         painelEmail.add(painelTopo, BorderLayout.NORTH); // botão de voltar adicionado em cima de tudo da div principal
 
+        voltar.addActionListener(e -> {// liga a pagina historico
+            SwingUtilities.invokeLater(() -> {
+                Historico historico = new Historico();
+                historico.setVisible(true);
+            });
+            dispose();
+        });
+
         // 
         JPanel panel_do_email = new JPanel(); //cria uma nova div. Ela é para os emails
         panel_do_email.setLayout(new BoxLayout(panel_do_email, BoxLayout.Y_AXIS)); //define o layout do jpnale como boxlayout, organizado na linha vertical

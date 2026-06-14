@@ -62,6 +62,14 @@ public class MensagemTexto extends JFrame {
         JButton enviarMesg = new JButton(">");
         enviarMesg.setPreferredSize(new Dimension(60, 30));
 
+        voltar.addActionListener(e -> { // liga a pagina historico
+            SwingUtilities.invokeLater(() -> {
+                Historico historico = new Historico();
+                historico.setVisible(true);
+            });
+            dispose();
+        });
+
         painelRodapeMsg.add(scrolldigitarmensagem, BorderLayout.CENTER); // ocupa o espaço sobrante
         painelRodapeMsg.add(enviarMesg, BorderLayout.EAST);      // botão "enviar" na esquerda
         add(painelRodapeMsg, BorderLayout.SOUTH); //adiciona caixa de entrada da mensagem e botão de enviar
