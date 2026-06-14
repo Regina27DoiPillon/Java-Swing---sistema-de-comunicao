@@ -1,176 +1,149 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.*; // Importa componentes gráficos do Swing
+import java.awt.*; // Importa classes de interface gráfica (cores, fontes, dimensões)
+import java.awt.event.*; // Importa eventos e ouvintes de eventos
 
-public class Cadastro extends JPanel{
+public class Cadastro { // Classe principal do programa
 
-    public Cadastro(){
+    public static void main(String[] args) { // Método principal que inicia o programa
 
-        JFrame janela = new JFrame("Criar Conta");
-        janela.setSize(500, 750);
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janela.setLocationRelativeTo(null);
+        JFrame janela = new JFrame("Criar Conta"); // Cria a janela com o título "Criar Conta"
+        janela.setSize(500, 750); // Define largura e altura da janela
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Fecha o programa ao fechar a janela
+        janela.setLocationRelativeTo(null); // Centraliza a janela na tela
 
-        JPanel painel = new JPanel();
-        painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
-        painel.setBackground(Color.BLACK);
+        JPanel painel = new JPanel(); // Cria um painel para organizar os componentes
+        painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS)); // Organiza componentes na vertical
+        painel.setBackground(Color.BLACK); // Define fundo preto
 
-        // TÍTULO
-        JLabel titulo = new JLabel("Criar Conta");
-        titulo.setFont(new Font("Arial", Font.BOLD, 36));
-        titulo.setForeground(Color.WHITE);
-        titulo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel titulo = new JLabel("Criar Conta"); // Cria o título
+        titulo.setFont(new Font("Arial", Font.BOLD, 36)); // Define fonte e tamanho
+        titulo.setForeground(Color.WHITE); // Define cor branca
+        titulo.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza o componente
 
-        // EMAIL
-        JLabel emailLabel = new JLabel("Digite o email");
-        emailLabel.setForeground(Color.WHITE);
-        emailLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        emailLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel emailLabel = new JLabel("Digite o email"); // Texto do campo email
+        emailLabel.setForeground(Color.WHITE); // Cor branca
+        emailLabel.setFont(new Font("Arial", Font.BOLD, 18)); // Fonte do texto
+        emailLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza
 
-        JTextField emailCampo = new JTextField();
-        emailCampo.setMaximumSize(new Dimension(350, 35));
+        JTextField emailCampo = new JTextField(); // Campo para digitar email
+        emailCampo.setMaximumSize(new Dimension(350, 35)); // Tamanho máximo do campo
 
-        // TELEFONE
-        JLabel telefoneLabel = new JLabel("Digite o telefone");
-        telefoneLabel.setForeground(Color.WHITE);
-        telefoneLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        telefoneLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel telefoneLabel = new JLabel("Digite o telefone"); // Texto do campo telefone
+        telefoneLabel.setForeground(Color.WHITE); // Cor branca
+        telefoneLabel.setFont(new Font("Arial", Font.BOLD, 18)); // Fonte
+        telefoneLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza
 
-        JTextField telefoneCampo = new JTextField();
-        telefoneCampo.setMaximumSize(new Dimension(350, 35));
+        JTextField telefoneCampo = new JTextField(); // Campo para telefone
+        telefoneCampo.setMaximumSize(new Dimension(350, 35)); // Define tamanho
 
-        // NOME
-        JLabel nomeLabel = new JLabel("Digite o nome");
-        nomeLabel.setForeground(Color.WHITE);
-        nomeLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        nomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel nomeLabel = new JLabel("Digite o nome"); // Texto do campo nome
+        nomeLabel.setForeground(Color.WHITE); // Cor branca
+        nomeLabel.setFont(new Font("Arial", Font.BOLD, 18)); // Fonte
+        nomeLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza
 
-        JTextField nomeCampo = new JTextField();
-        nomeCampo.setMaximumSize(new Dimension(350, 35));
+        JTextField nomeCampo = new JTextField(); // Campo para nome
+        nomeCampo.setMaximumSize(new Dimension(350, 35)); // Define tamanho
 
-        // SENHA
-        JLabel senhaLabel = new JLabel("Digite uma senha");
-        senhaLabel.setForeground(Color.WHITE);
-        senhaLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        senhaLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel senhaLabel = new JLabel("Digite uma senha"); // Texto do campo senha
+        senhaLabel.setForeground(Color.WHITE); // Cor branca
+        senhaLabel.setFont(new Font("Arial", Font.BOLD, 18)); // Fonte
+        senhaLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza
 
-        JPasswordField senhaCampo = new JPasswordField();
-        senhaCampo.setMaximumSize(new Dimension(350, 35));
+        JPasswordField senhaCampo = new JPasswordField(); // Campo de senha oculto
+        senhaCampo.setMaximumSize(new Dimension(350, 35)); // Define tamanho
 
-        // CONTATO
-        JLabel contatoLabel = new JLabel("Contato");
-        contatoLabel.setForeground(Color.WHITE);
-        contatoLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        contatoLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel contatoLabel = new JLabel("Contato"); // Texto da seção contato
+        contatoLabel.setForeground(Color.WHITE); // Cor branca
+        contatoLabel.setFont(new Font("Arial", Font.BOLD, 18)); // Fonte
+        contatoLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza
 
-        JToggleButton tipoContato = new JToggleButton("Pessoal");
-        tipoContato.setMaximumSize(new Dimension(180, 40));
-        tipoContato.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JToggleButton tipoContato = new JToggleButton("Pessoal"); // Botão alternável
+        tipoContato.setMaximumSize(new Dimension(180, 40)); // Tamanho máximo
+        tipoContato.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza
 
-        tipoContato.addActionListener(new ActionListener() {
+        tipoContato.addActionListener(new ActionListener() { // Adiciona ação ao botão
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) { // Executa ao clicar
 
-                if (tipoContato.isSelected()) {
-                    tipoContato.setText("Profissional");
+                if (tipoContato.isSelected()) { // Verifica se está selecionado
+                    tipoContato.setText("Profissional"); // Troca texto para Profissional
                 } else {
-                    tipoContato.setText("Pessoal");
+                    tipoContato.setText("Pessoal"); // Volta para Pessoal
                 }
-
             }
         });
 
-        // CHECKBOXES
-        JLabel permitirLabel = new JLabel("Permitir:");
-        permitirLabel.setForeground(Color.WHITE);
-        permitirLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        permitirLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel permitirLabel = new JLabel("Permitir:"); // Título dos checkboxes
+        permitirLabel.setForeground(Color.WHITE); // Cor branca
+        permitirLabel.setFont(new Font("Arial", Font.BOLD, 18)); // Fonte
+        permitirLabel.setAlignmentX(Component.CENTER_ALIGNMENT); // Centraliza
 
-        JCheckBox ligacao = new JCheckBox("Ligação");
-        JCheckBox mensagem = new JCheckBox("Mensagem");
-        JCheckBox emailCheck = new JCheckBox("Email");
+        JCheckBox ligacao = new JCheckBox("Ligação"); // Caixa de seleção Ligação
+        JCheckBox mensagem = new JCheckBox("Mensagem"); // Caixa de seleção Mensagem
+        JCheckBox emailCheck = new JCheckBox("Email"); // Caixa de seleção Email
 
-        ligacao.setBackground(Color.BLACK);
+        ligacao.setBackground(Color.BLACK); // Fundo preto
         mensagem.setBackground(Color.BLACK);
         emailCheck.setBackground(Color.BLACK);
 
-        ligacao.setForeground(Color.WHITE);
+        ligacao.setForeground(Color.WHITE); // Texto branco
         mensagem.setForeground(Color.WHITE);
         emailCheck.setForeground(Color.WHITE);
 
-        ligacao.setAlignmentX(Component.CENTER_ALIGNMENT);
-        mensagem.setAlignmentX(Component.CENTER_ALIGNMENT);
-        emailCheck.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JButton criarConta = new JButton("Criar Conta"); // Cria botão
+        criarConta.setFont(new Font("Arial", Font.BOLD, 18)); // Define fonte
+        criarConta.setPreferredSize(new Dimension(200, 45)); // Define tamanho
 
-        // BOTÃO
-        JButton criarConta = new JButton("Criar Conta");
-        criarConta.setFont(new Font("Arial", Font.BOLD, 18));
-        criarConta.setPreferredSize(new Dimension(200, 45));
+        JPanel painelBotao = new JPanel(); // Painel para o botão
+        painelBotao.setBackground(Color.BLACK); // Fundo preto
+        painelBotao.add(criarConta); // Adiciona botão ao painel
 
-        JPanel painelBotao = new JPanel();
-        painelBotao.setBackground(Color.BLACK);
-        painelBotao.add(criarConta);
-
-        // AÇÃO DO BOTÃO
-        criarConta.addActionListener(new ActionListener() {
+        criarConta.addActionListener(new ActionListener() { // Evento do botão
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String email = emailCampo.getText().trim();
-                String telefone = telefoneCampo.getText().trim();
-                String nome = nomeCampo.getText().trim();
-                String senha = new String(senhaCampo.getPassword()).trim();
+                String email = emailCampo.getText().trim(); // Obtém email digitado
+                String telefone = telefoneCampo.getText().trim(); // Obtém telefone
+                String nome = nomeCampo.getText().trim(); // Obtém nome
+                String senha = new String(senhaCampo.getPassword()).trim(); // Obtém senha
 
-                // EMAIL OU TELEFONE
-                if (email.isEmpty() && telefone.isEmpty()) {
-
+                if (email.isEmpty() && telefone.isEmpty()) { // Verifica email e telefone
                     JOptionPane.showMessageDialog(
                             janela,
-                            "Preencha Email ou Telefone.");
-
-                    return;
+                            "Preencha Email ou Telefone."); // Exibe mensagem
+                    return; // Interrompe execução
                 }
 
-                // NOME
-                if (nome.isEmpty()) {
-
+                if (nome.isEmpty()) { // Verifica nome
                     JOptionPane.showMessageDialog(
                             janela,
                             "O nome é obrigatório.");
-
                     return;
                 }
 
-                // SENHA
-                if (senha.isEmpty()) {
-
+                if (senha.isEmpty()) { // Verifica senha
                     JOptionPane.showMessageDialog(
                             janela,
                             "A senha é obrigatória.");
-
                     return;
                 }
 
-                // CHECKBOX
                 if (!ligacao.isSelected()
                         && !mensagem.isSelected()
-                        && !emailCheck.isSelected()) {
+                        && !emailCheck.isSelected()) { // Verifica se marcou algum checkbox
 
                     JOptionPane.showMessageDialog(
                             janela,
                             "Selecione pelo menos uma forma de contato.");
-
                     return;
                 }
 
-                // CADASTRO JÁ EXISTENTE
                 if (email.equalsIgnoreCase("admin@gmail.com")
-                        || telefone.equals("999991120")) {
+                        || telefone.equals("999991120")) { // Simula cadastro existente
 
                     JOptionPane.showMessageDialog(
                             janela,
                             "Já existe conta criada com email/telefone.");
-
                     return;
                 }
 
@@ -180,53 +153,25 @@ public class Cadastro extends JPanel{
             }
         });
 
-        // ADICIONAR COMPONENTES
+        painel.add(Box.createVerticalStrut(30)); // Espaço vertical de 30 pixels
+        painel.add(titulo); // Adiciona título
+        painel.add(emailLabel); // Adiciona texto email
+        painel.add(emailCampo); // Adiciona campo email
+        painel.add(telefoneLabel); // Adiciona texto telefone
+        painel.add(telefoneCampo); // Adiciona campo telefone
+        painel.add(nomeLabel); // Adiciona texto nome
+        painel.add(nomeCampo); // Adiciona campo nome
+        painel.add(senhaLabel); // Adiciona texto senha
+        painel.add(senhaCampo); // Adiciona campo senha
+        painel.add(contatoLabel); // Adiciona seção contato
+        painel.add(tipoContato); // Adiciona botão alternável
+        painel.add(permitirLabel); // Adiciona título dos checkboxes
+        painel.add(ligacao); // Adiciona checkbox ligação
+        painel.add(mensagem); // Adiciona checkbox mensagem
+        painel.add(emailCheck); // Adiciona checkbox email
+        painel.add(painelBotao); // Adiciona painel do botão
 
-        painel.add(Box.createVerticalStrut(30));
-
-        painel.add(titulo);
-
-        painel.add(Box.createVerticalStrut(30));
-
-        painel.add(emailLabel);
-        painel.add(emailCampo);
-
-        painel.add(Box.createVerticalStrut(15));
-
-        painel.add(telefoneLabel);
-        painel.add(telefoneCampo);
-
-        painel.add(Box.createVerticalStrut(15));
-
-        painel.add(nomeLabel);
-        painel.add(nomeCampo);
-
-        painel.add(Box.createVerticalStrut(15));
-
-        painel.add(senhaLabel);
-        painel.add(senhaCampo);
-
-        painel.add(Box.createVerticalStrut(20));
-
-        painel.add(contatoLabel);
-
-        painel.add(Box.createVerticalStrut(10));
-
-        painel.add(tipoContato);
-
-        painel.add(Box.createVerticalStrut(20));
-
-        painel.add(permitirLabel);
-
-        painel.add(ligacao);
-        painel.add(mensagem);
-        painel.add(emailCheck);
-
-        painel.add(Box.createVerticalStrut(25));
-
-        painel.add(painelBotao);
-
-        janela.add(painel);
-        janela.setVisible(true);
+        janela.add(painel); // Adiciona painel à janela
+        janela.setVisible(true); // Torna a janela visível
     }
 }
